@@ -1,0 +1,2183 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinazon</title>
+    <link rel="shortcut icon" href="images/CH.png" type="image/svg+xml">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Patrick+Hand&display=swap");
+
+      :root {
+        --primary: #ff6b00;
+        --secondary: #00a2ff;
+        --light: #fff9f0;
+        --dark: #1a1a2e;
+        --gray: #e0e0e0;
+        --dark-gray: #555;
+        --accent: #ff00aa;
+        --success: #00cc66;
+        --error: #ff3333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Patrick Hand", "Comic Neue", cursive;
+      }
+
+      body {
+        background-color: var(--light);
+        color: #333;
+        background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="2" stroke-dasharray="5,5"/></svg>');
+      }
+
+      /* Header with cartoon effect */
+      header {
+        background-color: var(--dark);
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border-bottom: 4px solid var(--primary);
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        color: var(--primary);
+        font-size: 32px;
+        font-weight: bold;
+        margin-right: 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        font-family: "Comic Neue", cursive;
+      }
+
+      .logo img {
+        height: 45px;
+        margin-right: 10px;
+        filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+      }
+
+      .search-bar {
+        flex: 1;
+        display: flex;
+        margin: 0 20px;
+        position: relative;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 3px solid var(--primary);
+        border-radius: 8px 0 0 8px;
+        font-size: 16px;
+        background-color: var(--light);
+        outline: none;
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-bar button {
+        background-color: var(--primary);
+        border: 3px solid var(--primary);
+        border-left: none;
+        padding: 0 20px;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+        font-size: 18px;
+        color: white;
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+      }
+
+      .search-bar button:hover {
+        background-color: #e05e00;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+        transition: all 0.2s;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .nav-link span:first-child {
+        font-size: 12px;
+      }
+
+      .nav-link span:last-child {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .cart {
+        position: relative;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: var(--accent);
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Main content */
+      .main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, var(--primary), #ff3800);
+        border-radius: 15px;
+        padding: 50px 40px;
+        margin-bottom: 30px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        border: 4px solid white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+        position: relative;
+        display: inline-block;
+      }
+
+      .hero h1::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transform: skewX(-15deg);
+      }
+
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero button {
+        background-color: white;
+        color: var(--dark);
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.2s;
+        border: 3px solid white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero button::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0)
+        );
+        transform: rotate(30deg);
+        transition: all 0.3s;
+      }
+
+      .hero button:hover::after {
+        left: 100%;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin: 30px 0 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px dashed var(--primary);
+        display: inline-block;
+        color: var(--dark);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        border: 3px solid white;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px) rotate(1deg);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        border-color: var(--primary);
+      }
+
+      .product-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border: 2px solid var(--gray);
+        transition: all 0.3s;
+      }
+
+      .product-card:hover img {
+        transform: scale(1.05);
+        border-color: var(--primary);
+      }
+
+      .product-card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        min-height: 44px;
+        line-height: 1.3;
+      }
+
+      .product-card .price-container {
+        margin: 15px 0;
+      }
+
+      .product-card .price {
+        font-weight: bold;
+        font-size: 24px;
+        color: var(--dark);
+        display: inline-block;
+        background-color: #fff2e5;
+        padding: 3px 8px;
+        border-radius: 5px;
+      }
+
+      .product-card .old-price {
+        text-decoration: line-through;
+        color: var(--dark-gray);
+        font-size: 16px;
+        margin-right: 8px;
+        display: inline-block;
+      }
+
+      .product-card .discount {
+        color: #d40000;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: #ffe5e5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-left: 8px;
+      }
+
+      .product-card .rating {
+        color: var(--primary);
+        font-size: 16px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .product-card .rating-count {
+        color: var(--dark-gray);
+        font-size: 14px;
+        margin-left: 5px;
+      }
+
+      .product-card button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        font-weight: bold;
+        font-size: 16px;
+        transition: all 0.2s;
+        border: 2px solid var(--primary);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-card button:hover {
+        background-color: #e05e00;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .product-card button:active {
+        transform: translateY(0);
+      }
+
+      .product-card button.added {
+        background-color: var(--success);
+        border-color: var(--success);
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: var(--accent);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        transform: rotate(10deg);
+        border: 2px dashed white;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 40px 0 20px;
+        margin-top: 50px;
+        border-top: 4px solid var(--primary);
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 0;
+        right: 0;
+        height: 30px;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,0 Q25,10 50,0 T100,0 L100,10 L0,10 Z" fill="%231A1A2E"/></svg>');
+        background-size: 100% 100%;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+
+      .footer-column h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: var(--primary);
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+        position: relative;
+        display: inline-block;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 15px;
+      }
+
+      .footer-column ul li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-size: 20px;
+      }
+
+      .footer-column ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        transition: all 0.2s;
+        display: inline-block;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--dark-gray);
+        font-size: 14px;
+        color: var(--gray);
+      }
+
+      /* Cart modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border: 4px solid var(--primary);
+        position: relative;
+        animation: modalAppear 0.3s ease-out;
+      }
+
+      @keyframes modalAppear {
+        from {
+          transform: translateY(50px) scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark-gray);
+        transition: all 0.2s;
+      }
+
+      .close-modal:hover {
+        color: var(--primary);
+        transform: rotate(90deg);
+      }
+
+      .cart-items {
+        margin: 20px 0;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px dashed var(--gray);
+      }
+
+      .cart-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-right: 20px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .cart-item-info {
+        flex: 1;
+      }
+
+      .cart-item-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .cart-item-price {
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      .cart-item-remove {
+        color: #d40000;
+        cursor: pointer;
+        margin-left: 20px;
+        font-size: 20px;
+        transition: all 0.2s;
+      }
+
+      .cart-item-remove:hover {
+        transform: scale(1.2);
+      }
+
+      .cart-total {
+        text-align: right;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: var(--dark);
+      }
+
+      .cart-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+      }
+
+      .cart-btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s;
+        border: 2px solid;
+      }
+
+      .cart-btn-checkout {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .cart-btn-checkout:hover {
+        background-color: #e05e00;
+        transform: translateY(-2px);
+      }
+
+      .cart-btn-clear {
+        background-color: white;
+        color: #d40000;
+        border-color: #d40000;
+      }
+
+      .cart-btn-clear:hover {
+        background-color: #ffe5e5;
+        transform: translateY(-2px);
+      }
+
+      /* Error modal */
+      .error-modal-content {
+        background-color: white;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border: 4px solid var(--error);
+        position: relative;
+        text-align: center;
+      }
+
+      .error-icon {
+        font-size: 50px;
+        color: var(--error);
+        margin-bottom: 20px;
+      }
+
+      .error-title {
+        font-size: 24px;
+        color: var(--error);
+        margin-bottom: 15px;
+      }
+
+      .error-message {
+        font-size: 18px;
+        margin-bottom: 25px;
+      }
+
+      .error-btn {
+        background-color: var(--error);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s;
+      }
+
+      .error-btn:hover {
+        background-color: #e60000;
+        transform: translateY(-2px);
+      }
+
+      /* Success modal */
+      .success-modal-content {
+        background-color: white;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border: 4px solid var(--success);
+        position: relative;
+        text-align: center;
+      }
+
+      .success-icon {
+        font-size: 50px;
+        color: var(--success);
+        margin-bottom: 20px;
+      }
+
+      .success-title {
+        font-size: 24px;
+        color: var(--success);
+        margin-bottom: 15px;
+      }
+
+      .success-message {
+        font-size: 18px;
+        margin-bottom: 25px;
+      }
+
+      .success-btn {
+        background-color: var(--success);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s;
+      }
+
+      .success-btn:hover {
+        background-color: #00b359;
+        transform: translateY(-2px);
+      }
+
+      /* Animations */
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(2deg);
+        }
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+      }
+
+      @keyframes shake {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(-5deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+        75% {
+          transform: rotate(-3deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      .floating {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      .shake {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      /* Cartoon elements */
+      .bubble {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hand-drawn-line {
+        position: absolute;
+        background-color: transparent;
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+      }
+
+      /* Responsiveness */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-wrap: wrap;
+        }
+
+        .logo {
+          margin-bottom: 10px;
+        }
+
+        .search-bar {
+          order: 3;
+          width: 100%;
+          margin: 10px 0;
+        }
+
+        .nav-links {
+          margin-left: auto;
+        }
+
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .hero p {
+          font-size: 18px;
+        }
+
+        .products-grid {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-links {
+          width: 100%;
+          justify-content: space-between;
+          margin-top: 10px;
+        }
+
+        .hero {
+          padding: 30px 20px;
+        }
+
+        .hero h1 {
+          font-size: 28px;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <style>
+      .social-icons {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 15px;
+        z-index: 1000;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .social-icon:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+      }
+
+      .x-icon {
+        background-color: #000000;
+      }
+
+      .telegram-icon {
+        background-color: #0088cc;
+      }
+    </style>
+    <!-- Иконочный шрифт Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+  </head>
+  <body>
+    <div class="social-icons">
+      <a href="https://x.com/chinazonUS" class="social-icon x-icon" target="_blank">
+        <img src="images/icons8-x-50.png" alt="">
+      </a>
+    </div>
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgNjQiPjxwYXRoIGZpbGw9IiNmZjZjMDAiIGQ9Ik0yNDQgMzJjMCAxMy4zLTEwLjcgMjQtMjQgMjRIMzZjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjRoMTg0YzEzLjMgMCAyNCAxMC43IDI0IDI0WiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMjggMTZjLTguOCAwLTE2IDcuMi0xNiAxNnM3LjIgMTYgMTYgMTYgMTYtNy4yIDE2LTE2LTcuMi0xNi0xNi0xNnptMzIgMTZjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzIgMTQuMy0zMiAzMi0zMiAzMiAxNC4zIDMyIDMyWiIvPjxwYXRoIGZpbGw9IiNmZjZjMDAiIGQ9Ik0xMjggMzJjLTguOCAwLTE2IDcuMi0xNiAxNnM3LjIgMTYgMTYgMTYgMTYtNy4yIDE2LTE2LTcuMi0xNi0xNi0xNnptMCAyNGM0LjQgMCA4LTMuNiA4LThzLTMuNi04LTgtOC04IDMuNi04IDggMy42IDggOCA4WiIvPjwvc3ZnPg==" alt="Chinazon">
+          Chinazon
+        </a>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Search products..." id="search-input">
+          <button onclick="searchProducts()">🔍 Search</button>
+        </div>
+
+        <div class="nav-links">
+          <a href="#" class="nav-link" onclick="showAuthModal()">
+            <span>Hello, sign in</span>
+            <span>Account</span>
+          </a>
+          <a href="#" class="nav-link">
+            <span>Returns</span>
+            <span>& Orders</span>
+          </a>
+          <a href="#" class="nav-link cart" onclick="showCart()">
+            <span>Cart</span>
+            <span id="cart-total">0 $</span>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <div class="bubble bubble-1" style="width: 80px; height: 80px; top: 20%; left: 10%"></div>
+        <div class="bubble bubble-2" style="width: 120px; height: 120px; bottom: 10%; right: 15%"></div>
+        <div class="hand-drawn-line" style="width: 200px; height: 200px; top: -50px; right: -50px"></div>
+        <h1>Updated Amazon</h1>
+        <p>Say thanks to trump tarrifs!</p>
+        <button onclick="scrollToProducts()">Start Shopping</button>
+      </section>
+
+      <h2 class="section-title" id="products-section">🔥 Popular Products</h2>
+      <div class="products-grid" id="products-container">
+        <!-- Products will be added via JS -->
+      </div>
+
+      <h2 class="section-title">🎉 Special Offers</h2>
+      <div class="products-grid" id="deals-container">
+        <!-- Deal products will be added via JS -->
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Shop With Us</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="showInfoModal('Terms of Use')">Terms of Use</a>
+            </li>
+            <li>
+              <a href="#" onclick="showInfoModal('Privacy Policy')">Privacy Policy</a>
+            </li>
+            <li><a href="#" onclick="showInfoModal('Returns')">Returns</a></li>
+            <li>
+              <a href="#" onclick="showInfoModal('Shipping')">Shipping</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Make Money With Us</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="showInfoModal('Sell on Chinazon')">Sell on Chinazon</a>
+            </li>
+            <li>
+              <a href="#" onclick="showInfoModal('Affiliate Program')">Affiliate Program</a>
+            </li>
+            <li>
+              <a href="#" onclick="showInfoModal('Advertise Your Products')">Advertise Your Products</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>About Chinazon</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="showInfoModal('About Us')">About Us</a>
+            </li>
+            <li><a href="#" onclick="showInfoModal('Careers')">Careers</a></li>
+            <li>
+              <a href="#" onclick="showInfoModal('Press Center')">Press Center</a>
+            </li>
+            <li><a href="#" onclick="showInfoModal('Reviews')">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Help</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="showInfoModal('Help Center')">Help Center</a>
+            </li>
+            <li>
+              <a href="#" onclick="showInfoModal('How to Order')">How to Order</a>
+            </li>
+            <li>
+              <a href="#" onclick="showInfoModal('Payments')">Payments</a>
+            </li>
+            <li>
+              <a href="#" onclick="showInfoModal('Contact Us')">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        � 2025 Chinazon.com - All Rights Reserved. Prices are in USD.
+      </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="hideCart()">�</span>
+        <h2>🛒 Your Cart</h2>
+        <div class="cart-items" id="cart-items">
+          <!-- Cart items will be added here -->
+          <div class="empty-cart-message">Your cart is empty</div>
+        </div>
+        <div class="cart-total" id="cart-total-modal">Total: 0 $</div>
+        <div class="cart-actions">
+          <button class="cart-btn cart-btn-clear" onclick="clearCart()">
+            Clear Cart
+          </button>
+          <button class="cart-btn cart-btn-checkout" onclick="checkout()">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+      <div class="modal-content" style="max-width: 400px">
+        <span class="close-modal" onclick="hideAuthModal()">�</span>
+        <h2>🔐 Account Login</h2>
+        <form id="auth-form" style="margin-top: 20px">
+          <div style="margin-bottom: 15px">
+            <label for="email" style="display: block; margin-bottom: 5px">Email</label>
+            <input type="email" id="email" style="
+                width: 100%;
+                padding: 10px;
+                border: 2px solid var(--gray);
+                border-radius: 5px;
+              " required="">
+          </div>
+          <div style="margin-bottom: 20px">
+            <label for="password" style="display: block; margin-bottom: 5px">Password</label>
+            <input type="password" id="password" style="
+                width: 100%;
+                padding: 10px;
+                border: 2px solid var(--gray);
+                border-radius: 5px;
+              " required="">
+          </div>
+          <button type="submit" style="
+              width: 100%;
+              padding: 12px;
+              background-color: var(--primary);
+              color: white;
+              border: none;
+              border-radius: 5px;
+              font-weight: bold;
+              cursor: pointer;
+            ">
+            Sign In
+          </button>
+        </form>
+        <p style="text-align: center; margin-top: 20px">
+          Don't have an account?
+          <a href="#" style="color: var(--primary)" onclick="showRegisterModal()">Register</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal" id="info-modal">
+      <div class="modal-content" style="max-width: 600px">
+        <span class="close-modal" onclick="hideInfoModal()">�</span>
+        <h2 id="info-modal-title">Information</h2>
+        <div id="info-modal-content" style="margin-top: 20px">
+          Modal content will appear here
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal" id="error-modal">
+      <div class="error-modal-content">
+        <div class="error-icon">❌</div>
+        <h2 class="error-title" id="error-title">Error</h2>
+        <p class="error-message" id="error-message">An error has occurred.</p>
+        <button class="error-btn" onclick="hideErrorModal()">OK</button>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+      <div class="success-modal-content">
+        <div class="success-icon">✔️</div>
+        <h2 class="success-title" id="success-title">Success</h2>
+        <p class="success-message" id="success-message">
+          Operation completed successfully.
+        </p>
+        <button class="success-btn" onclick="hideSuccessModal()">OK</button>
+      </div>
+    </div>
+
+    <script>
+      // Product data
+      const products = [
+        {
+          id: 1,
+          name: "jumper Laptop, 12GB RAM 640GB ROM, Office 365-1 Year 5305U Processor",
+          price: 49950,
+          oldPrice: 999,
+          image:
+            "https://m.media-amazon.com/images/I/81FQFt8LKTL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 1247,
+          badge: "Bestseller",
+          category: "popular",
+        },
+        {
+          id: 2,
+          name: "Apple iPhone 14, 128GB, Midnight - Unlocked (Renewed)",
+          price: 64950,
+          oldPrice: 1299,
+          image:
+            "https://m.media-amazon.com/images/I/61WUSYIQdKL._AC_SY679_.jpg",
+          rating: 4,
+          reviews: 892,
+          category: "popular",
+        },
+        {
+          id: 3,
+          name: "A14 Pro Max 5G Unlocked Smartphone,6GB+256GB, for Android 13",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/61X6oHiPYWL._AC_SX679_.jpg",
+          rating: 5,
+          reviews: 3567,
+          badge: "Sale",
+          category: "popular",
+        },
+        {
+          id: 4,
+          name: "SAMSUNG Galaxy S25 Cell Phone, 128GB AI Smartphone",
+          price: 14950,
+          oldPrice: 299,
+          image:
+            "https://m.media-amazon.com/images/I/61C56sF0iUL._AC_SX679_.jpg",
+          rating: 4,
+          reviews: 1563,
+          category: "popular",
+        },
+        {
+          id: 5,
+          name: "Lacoste Mens 100% Cotton Regular Fit Crew Neck T-Shirt, 3-Pack",
+          price: 4950,
+          oldPrice: 55,
+          image:
+            "https://m.media-amazon.com/images/I/3100aDBs3HL._AC_SX569_.jpg",
+          rating: 3,
+          reviews: 487,
+          badge: "New",
+          category: "popular",
+        },
+        {
+          id: 6,
+          name: "adidas Men's Superstar Shoe",
+          price: 79950,
+          oldPrice: 1599,
+          image:
+            "https://m.media-amazon.com/images/I/71OS3-Nla-L._AC_SX575_.jpg",
+          rating: 5,
+          reviews: 2341,
+          category: "popular",
+        },
+        {
+          id: 7,
+          name: "Herschel Supply Co. Roy Wallet",
+          price: 24950,
+          oldPrice: 499,
+          image:
+            "https://m.media-amazon.com/images/I/51yHA-n12SL._AC_SX569_.jpg",
+          rating: 4,
+          reviews: 3789,
+          badge: "Limited",
+          category: "popular",
+        },
+        {
+          id: 8,
+          name: "MXZ Gaming PC Computer R5 3600, RTX 4060, 16G DDR4, NVME 500G",
+          price: 34950,
+          oldPrice: 699,
+          image:
+            "https://m.media-amazon.com/images/I/815sB3BC-HL._AC_SX466_.jpg",
+          rating: 5,
+          reviews: 1245,
+          category: "popular",
+        },
+        {
+          id: 9,
+          name: "CRUA 27 Curved Gaming Monitor, 180Hz/200Hz FHD 1080P VA Screen 1500R Computer Monitors",
+          price: 29950,
+          oldPrice: 599,
+          image:
+            "https://m.media-amazon.com/images/I/719McFzngWL._AC_SX466_.jpg",
+          rating: 3,
+          reviews: 567,
+          badge: "-90%",
+          category: "deals",
+        },
+        {
+          id: 10,
+          name: "Apple Carplay Screen for Car",
+          price: 19950,
+          oldPrice: 399,
+          image:
+            "https://m.media-amazon.com/images/I/715LHnNFNmL._AC_SX466_.jpg",
+          rating: 4,
+          reviews: 2341,
+          category: "deals",
+        },
+        {
+          id: 11,
+          name: "MICHELIN Commander III Touring Rear Tire",
+          price: 74950,
+          oldPrice: 1499,
+          image:
+            "https://m.media-amazon.com/images/I/51TnyFz7AZL._AC_SX466_.jpg",
+          rating: 5,
+          reviews: 1789,
+          badge: "Top Seller",
+          category: "deals",
+        },
+        {
+          id: 12,
+          name: "Tiege Hanley Men’s Skin Care Set, Essential Routine (System Level 1)",
+          price: 44950,
+          oldPrice: 899,
+          image:
+            "https://m.media-amazon.com/images/I/41gpbAwVSnL._SX300_SY300_QL70_FMwebp_.jpg",
+          rating: 4,
+          reviews: 1567,
+          category: "deals",
+        },
+        {
+          id: 13,
+          name: "CeraVe Moisturizing Cream Combo Pack, Contains 16 Ounce with Pump",
+          price: 14950,
+          oldPrice: 299,
+          image: "https://m.media-amazon.com/images/I/61PcGo1BiJL._SX466_.jpg",
+          rating: 4,
+          reviews: 2345,
+          badge: "Buyer's Choice",
+          category: "deals",
+        },
+        {
+          id: 14,
+          name: "Apple 2025 MacBook Air 13-inch Laptop with M4 chip: Built for Apple Intelligence",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/71igjFyr56L._AC_SX522_.jpg",
+          rating: 4,
+          reviews: 3456,
+          category: "deals",
+        },
+        {
+          id: 15,
+          name: "Early 2020 Apple MacBook Air with 1.1GHz Intel Core i3 (13-inch",
+          price: 19950,
+          oldPrice: 399,
+          image:
+            "https://m.media-amazon.com/images/I/71arfjiT8vL._AC_SX466_.jpg",
+          rating: 4,
+          reviews: 1234,
+          badge: "Deal",
+          category: "deals",
+        },
+        {
+          id: 16,
+          name: "UGREEN 10 Gbps Micro B to USB C Hard Drive Cables, 1.5FT USB C to Micro B",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/71bUnjyM7aL._AC_SX466_.jpg",
+          rating: 5,
+          reviews: 4567,
+          category: "deals",
+        },
+        {
+          id: 17,
+          name: "Razer BlackShark V2 X Gaming Headset",
+          price: 49950,
+          oldPrice: 999,
+          image:
+            "https://m.media-amazon.com/images/I/71MGiPTwXAL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+          rating: 5,
+          reviews: 1247,
+          badge: "Bestseller",
+          category: "popular",
+        },
+        {
+          id: 18,
+          name: "Razer DeathAdder Essential Gaming Mouse: 6400 DPI Optical Sensor",
+          price: 64950,
+          oldPrice: 1299,
+          image:
+            "https://m.media-amazon.com/images/I/51xLy45CSfL._AC_SX466_.jpg",
+          rating: 4,
+          reviews: 892,
+          category: "popular",
+        },
+        {
+          id: 19,
+          name: "Abstract Topographic Map White Grey Black Gaming Mouse Pad Long Mouse Pad Large Desk Mat",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/71vwKp6YqvL._AC_SX466_.jpg",
+          rating: 5,
+          reviews: 3567,
+          badge: "Sale",
+          category: "popular",
+        },
+        {
+          id: 20,
+          name: "Desk Mat Large Gaming White Mouse Pad Minimalist Topographic Map Desk Mat Extended",
+          price: 14950,
+          oldPrice: 299,
+          image:
+            "https://m.media-amazon.com/images/I/71txD47jaOL._AC_SX466_.jpg",
+          rating: 4,
+          reviews: 1563,
+          category: "popular",
+        },
+        {
+          id: 21,
+          name: "Lacoste Mens 100% Cotton Regular Fit Crew Neck T-Shirt, 3-Pack",
+          price: 4950,
+          oldPrice: 55,
+          image:
+            "https://m.media-amazon.com/images/I/3100aDBs3HL._AC_SX569_.jpg",
+          rating: 3,
+          reviews: 487,
+          badge: "New",
+          category: "popular",
+        },
+        {
+          id: 22,
+          name: "Sweetcrispy Computer Gaming Desk Chair - Ergonomic PU Leather with Comfy Lumbar Support",
+          price: 79950,
+          oldPrice: 1599,
+          image:
+            "https://m.media-amazon.com/images/I/61EADx2jJaL._AC_SY879_.jpg",
+          rating: 5,
+          reviews: 2341,
+          category: "popular",
+        },
+        {
+          id: 23,
+          name: "Ergonomic Office Chair with Lumbar Support - Adjustable Computer Desk Chairs for Home Office",
+          price: 24950,
+          oldPrice: 499,
+          image:
+            "https://m.media-amazon.com/images/I/71liGV0zzcL._AC_SX679_.jpg",
+          rating: 4,
+          reviews: 3789,
+          badge: "Limited",
+          category: "popular",
+        },
+        {
+          id: 24,
+          name: "Sunflower Table RunnersTabletop Cloth for Wedding Dining Table Holiday Party Kitchen",
+          price: 34950,
+          oldPrice: 699,
+          image:
+            "https://m.media-amazon.com/images/I/81pyySBe7sL._AC_SX679_.jpg",
+          rating: 5,
+          reviews: 1245,
+          category: "popular",
+        },
+        {
+          id: 25,
+          name: "Poultry Shears, Heavy duty Kitchen Scissors for Food, Poultry Scissors for Meat with Anti-Slip Handle & Safety Lock",
+          price: 29950,
+          oldPrice: 599,
+          image:
+            "https://m.media-amazon.com/images/I/61F8XcT2A9L._AC_SX679_.jpg",
+          rating: 3,
+          reviews: 567,
+          badge: "-90%",
+          category: "deals",
+        },
+        {
+          id: 26,
+          name: "Yaanthiv's Checked Kitchen Napkins - Pack of 8 Cotton, Soft & Absorbent Reusable Cloth",
+          price: 19950,
+          oldPrice: 399,
+          image:
+            "https://m.media-amazon.com/images/I/91DKz6NzPlL._AC_SX466_.jpg",
+          rating: 4,
+          reviews: 2341,
+          category: "deals",
+        },
+        {
+          id: 27,
+          name: "Chandeliers for Dining Room, Large Chandeliers for High Ceilings 45.67",
+          price: 74950,
+          oldPrice: 1499,
+          image:
+            "https://m.media-amazon.com/images/I/81oPSLNWBKL._AC_SX679_PIbundle-14,TopRight,0,0_SH20_.jpg",
+          rating: 5,
+          reviews: 1789,
+          badge: "Top Seller",
+          category: "deals",
+        },
+        {
+          id: 28,
+          name: "Amazon Essentials Women's Loafer Flat",
+          price: 44950,
+          oldPrice: 899,
+          image:
+            "https://m.media-amazon.com/images/I/71Q2ca9CvJL._AC_SY575_.jpg",
+          rating: 4,
+          reviews: 1567,
+          category: "deals",
+        },
+        {
+          id: 29,
+          name: "CeraVe Moisturizing Cream Combo Pack, Contains 16 Ounce with Pump",
+          price: 14950,
+          oldPrice: 299,
+          image: "https://m.media-amazon.com/images/I/61PcGo1BiJL._SX466_.jpg",
+          rating: 4,
+          reviews: 2345,
+          badge: "Buyer's Choice",
+          category: "deals",
+        },
+        {
+          id: 30,
+          name: "adidas Men's Lite Racer Adapt 7.0 Sneaker",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/71xxWk0pJBL._AC_SX575_.jpg",
+          rating: 4,
+          reviews: 3456,
+          category: "deals",
+        },
+        {
+          id: 17,
+          name: "Sony WH-1000XM5 Wireless Noise Canceling Headphones",
+          price: 39950,
+          oldPrice: 799,
+          image:
+            "https://m.media-amazon.com/images/I/51aXvjzcukL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+          rating: 5,
+          reviews: 45231,
+          badge: "Bestseller",
+          category: "popular",
+        },
+        {
+          id: 18,
+          name: "Nintendo Switch OLED Model w/ White Joy-Con",
+          price: 34950,
+          oldPrice: 699,
+          image:
+            "https://m.media-amazon.com/images/I/71+rF2UJLTL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 28765,
+          category: "popular",
+        },
+        {
+          id: 19,
+          name: "Apple AirPods Pro (2nd Generation)",
+          price: 24950,
+          oldPrice: 499,
+          image:
+            "https://m.media-amazon.com/images/I/51+kshUUTdL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 56321,
+          badge: "Sale",
+          category: "popular",
+        },
+        {
+          id: 20,
+          name: "Samsung 65-Inch Class QLED Q80B Series",
+          price: 99950,
+          oldPrice: 1999,
+          image:
+            "https://m.media-amazon.com/images/I/61JF-+TcCvL._AC_UY218_.jpg",
+          rating: 4,
+          reviews: 12345,
+          category: "popular",
+        },
+        {
+          id: 21,
+          name: "Dyson V15 Detect Absolute Vacuum",
+          price: 69950,
+          oldPrice: 1399,
+          image:
+            "https://m.media-amazon.com/images/I/617eA0tEMIL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 18765,
+          badge: "New",
+          category: "popular",
+        },
+        {
+          id: 22,
+          name: "Instant Pot Duo 7-in-1 Electric Pressure Cooker",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/71ADby-XIML._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 87654,
+          category: "popular",
+        },
+        {
+          id: 23,
+          name: "Fitbit Charge 6 Fitness Tracker",
+          price: 14950,
+          oldPrice: 299,
+          image:
+            "https://m.media-amazon.com/images/I/61wn2jfhBkL._AC_UY218_.jpg",
+          rating: 4,
+          reviews: 23456,
+          badge: "Limited",
+          category: "popular",
+        },
+        {
+          id: 24,
+          name: "Bose QuietComfort 45 Wireless Headphones",
+          price: 27950,
+          oldPrice: 559,
+          image:
+            "https://m.media-amazon.com/images/I/51HHABMPoVL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 34567,
+          category: "popular",
+        },
+        {
+          id: 25,
+          name: "Ninja BL660 Professional Blender",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/812p2c+vnHL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 45678,
+          badge: "-90%",
+          category: "deals",
+        },
+        {
+          id: 26,
+          name: "Amazon Echo Dot (5th Gen) with clock",
+          price: 5950,
+          oldPrice: 119,
+          image:
+            "https://m.media-amazon.com/images/I/51SHNqAFCVL._AC_UY218_.jpg",
+          rating: 4,
+          reviews: 98765,
+          category: "deals",
+        },
+        {
+          id: 27,
+          name: "Logitech MX Master 3S Wireless Mouse",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/51m4354BqaL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 23456,
+          badge: "Top Seller",
+          category: "deals",
+        },
+        {
+          id: 28,
+          name: "Anker 737 Power Bank (PowerCore 24K)",
+          price: 14950,
+          oldPrice: 299,
+          image:
+            "https://m.media-amazon.com/images/I/71Sn62lz-PL._AC_UY218_.jpg",
+          rating: 4,
+          reviews: 12345,
+          category: "deals",
+        },
+        {
+          id: 29,
+          name: "Google Nest Learning Thermostat",
+          price: 24950,
+          oldPrice: 499,
+          image:
+            "https://m.media-amazon.com/images/I/31750hI5MLL._AC_UL320_.jpg",
+          rating: 5,
+          reviews: 34567,
+          badge: "Buyer's Choice",
+          category: "deals",
+        },
+        {
+          id: 30,
+          name: "HP DeskJet 2755e Wireless Color All-in-One Printer",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/61bKpCb+8BL._AC_UY218_.jpg",
+          rating: 4,
+          reviews: 23456,
+          category: "deals",
+        },
+        {
+          id: 31,
+          name: "Early 2020 Apple MacBook Air with 1.1GHz Intel Core i3 (13-inch)",
+          price: 19950,
+          oldPrice: 399,
+          image:
+            "https://m.media-amazon.com/images/I/71thf1SYnGL._AC_UY218_.jpg",
+          rating: 4,
+          reviews: 1234,
+          badge: "Deal",
+          category: "deals",
+        },
+        {
+          id: 32,
+          name: "UGREEN 10 Gbps Micro B to USB C Hard Drive Cables, 1.5FT USB C to Micro B",
+          price: 9950,
+          oldPrice: 199,
+          image:
+            "https://m.media-amazon.com/images/I/81TQBHCCr2L._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 4567,
+          category: "deals",
+        },
+        {
+          id: 33,
+          name: "LEGO Star Wars Millennium Falcon 75192 Building Kit",
+          price: 84950,
+          oldPrice: 1699,
+          image:
+            "https://m.media-amazon.com/images/I/711Sg0YWPoL._AC_UL320_.jpg",
+          rating: 5,
+          reviews: 9876,
+          badge: "Exclusive",
+          category: "popular",
+        },
+        {
+          id: 34,
+          name: "Yeti Rambler 20 oz Tumbler",
+          price: 3950,
+          oldPrice: 79,
+          image:
+            "https://m.media-amazon.com/images/I/61gKp0MHPOL._AC_UL320_.jpg",
+          rating: 5,
+          reviews: 23456,
+          category: "popular",
+        },
+        {
+          id: 35,
+          name: 'Kindle Paperwhite (16 GB) - Now with a 6.8" display',
+          price: 14950,
+          oldPrice: 299,
+          image:
+            "https://m.media-amazon.com/images/I/51-PfgC9RBL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 87654,
+          badge: "Editors' Choice",
+          category: "popular",
+        },
+        {
+          id: 36,
+          name: "PlayStation 5 Console (PS5)",
+          price: 49950,
+          oldPrice: 999,
+          image:
+            "https://m.media-amazon.com/images/I/713lFiOcFjL._AC_UY218_.jpg",
+          rating: 5,
+          reviews: 76543,
+          category: "popular",
+        },
+      ];
+
+      // Cart
+      let cart = [];
+
+      // DOM elements
+      const productsContainer = document.getElementById("products-container");
+      const dealsContainer = document.getElementById("deals-container");
+      const cartCount = document.querySelector(".cart-count");
+      const cartTotal = document.getElementById("cart-total");
+      const cartItemsContainer = document.getElementById("cart-items");
+      const cartTotalModal = document.getElementById("cart-total-modal");
+      const cartModal = document.getElementById("cart-modal");
+      const authModal = document.getElementById("auth-modal");
+      const infoModal = document.getElementById("info-modal");
+      const infoModalTitle = document.getElementById("info-modal-title");
+      const infoModalContent = document.getElementById("info-modal-content");
+      const errorModal = document.getElementById("error-modal");
+      const errorTitle = document.getElementById("error-title");
+      const errorMessage = document.getElementById("error-message");
+      const successModal = document.getElementById("success-modal");
+      const successTitle = document.getElementById("success-title");
+      const successMessage = document.getElementById("success-message");
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        renderProducts();
+        renderDeals();
+        createBubbles();
+
+        // Load cart from localStorage
+        const savedCart = localStorage.getItem("chinazon-cart");
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          updateCart();
+        }
+      });
+
+      // Render popular products
+      function renderProducts() {
+        const popularProducts = products.filter(
+          (p) => p.category === "popular"
+        );
+
+        productsContainer.innerHTML = popularProducts
+          .map(
+            (product) => `
+                <div class="product-card" data-id="${product.id}">
+                    ${
+                      product.badge
+                        ? `<span class="product-badge">${product.badge}</span>`
+                        : ""
+                    }
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <div class="rating">${"★".repeat(
+                      product.rating
+                    )}${"☆".repeat(
+              5 - product.rating
+            )} <span class="rating-count">(${product.reviews})</span></div>
+                    <div class="price-container">
+                        <span class="old-price">$${product.oldPrice}</span>
+                        <span class="price">$${product.price.toLocaleString()}</span>
+                        <span class="discount">+${Math.round(
+                          (product.price / product.oldPrice - 1) * 100
+                        )}00%</span>
+                    </div>
+                    <button onclick="addToCart(${
+                      product.id
+                    })">Add to Cart</button>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      // Render deal products
+      function renderDeals() {
+        const dealProducts = products.filter((p) => p.category === "deals");
+
+        dealsContainer.innerHTML = dealProducts
+          .map(
+            (product) => `
+                <div class="product-card" data-id="${product.id}">
+                    ${
+                      product.badge
+                        ? `<span class="product-badge">${product.badge}</span>`
+                        : ""
+                    }
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <div class="rating">${"★".repeat(
+                      product.rating
+                    )}${"☆".repeat(
+              5 - product.rating
+            )} <span class="rating-count">(${product.reviews})</span></div>
+                    <div class="price-container">
+                        <span class="old-price">$${product.oldPrice}</span>
+                        <span class="price">$${product.price.toLocaleString()}</span>
+                        <span class="discount">+${Math.round(
+                          (product.price / product.oldPrice - 1) * 100
+                        )}00%</span>
+                    </div>
+                    <button onclick="addToCart(${
+                      product.id
+                    })">Add to Cart</button>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      // Add product to cart
+      function addToCart(productId) {
+        const product = products.find((p) => p.id === productId);
+        if (!product) return;
+
+        const existingItem = cart.find((item) => item.id === productId);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1,
+          });
+        }
+
+        updateCart();
+        animateAddToCart(productId);
+
+        // Save cart to localStorage
+        localStorage.setItem("chinazon-cart", JSON.stringify(cart));
+
+        // Show success message
+        showSuccessModal(
+          "Added to Cart",
+          `${product.name} has been added to your cart!`
+        );
+      }
+
+      // Animate add to cart
+      function animateAddToCart(productId) {
+        const button = document.querySelector(
+          `.product-card[data-id="${productId}"] button`
+        );
+        if (!button) return;
+
+        button.textContent = "✓ Added!";
+        button.classList.add("added");
+
+        // Shake cart animation
+        const cartIcon = document.querySelector(".nav-link.cart");
+        cartIcon.classList.add("shake");
+        setTimeout(() => {
+          cartIcon.classList.remove("shake");
+        }, 500);
+
+        setTimeout(() => {
+          button.textContent = "Add to Cart";
+          button.classList.remove("added");
+        }, 2000);
+      }
+
+      // Update cart
+      function updateCart() {
+        // Update counter
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+
+        // Update total price
+        const totalPrice = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+        cartTotal.textContent = `$${totalPrice.toLocaleString()}`;
+
+        // Update cart items in modal
+        renderCartItems();
+      }
+
+      // Render cart items
+      function renderCartItems() {
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML =
+            '<div class="empty-cart-message">Your cart is empty</div>';
+          cartTotalModal.textContent = "Total: $0";
+          return;
+        }
+
+        const totalPrice = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+
+        cartItemsContainer.innerHTML = cart
+          .map(
+            (item) => `
+                <div class="cart-item" data-id="${item.id}">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toLocaleString()} × ${
+              item.quantity
+            } = $${(item.price * item.quantity).toLocaleString()}</div>
+                    </div>
+                    <div class="cart-item-remove" onclick="removeFromCart(${
+                      item.id
+                    })">🗑️</div>
+                </div>
+            `
+          )
+          .join("");
+
+        cartTotalModal.textContent = `Total: $${totalPrice.toLocaleString()}`;
+      }
+
+      // Remove item from cart
+      function removeFromCart(productId) {
+        cart = cart.filter((item) => item.id !== productId);
+        updateCart();
+
+        // Save cart to localStorage
+        localStorage.setItem("chinazon-cart", JSON.stringify(cart));
+
+        // Show success message
+        showSuccessModal(
+          "Removed from Cart",
+          "Item has been removed from your cart."
+        );
+      }
+
+      // Clear cart
+      function clearCart() {
+        cart = [];
+        updateCart();
+        localStorage.removeItem("chinazon-cart");
+
+        // Show success message
+        showSuccessModal("Cart Cleared", "Your cart has been cleared.");
+      }
+
+      // Checkout - now shows error instead of completing purchase
+      function checkout() {
+        if (cart.length === 0) {
+          showErrorModal(
+            "Empty Cart",
+            "Your cart is empty! Add some items before checkout."
+          );
+          return;
+        }
+
+        const totalPrice = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+
+        // Show error modal instead of completing purchase
+        showErrorModal(
+          "Purchase Blocked",
+          `We're sorry, but purchases are currently disabled on Chinazon. Your total would have been $${totalPrice.toLocaleString()}.`
+        );
+      }
+
+      // Search products
+      function searchProducts() {
+        const searchTerm = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        if (!searchTerm) return;
+
+        const filteredProducts = products.filter((p) =>
+          p.name.toLowerCase().includes(searchTerm)
+        );
+
+        if (filteredProducts.length === 0) {
+          productsContainer.innerHTML =
+            '<div style="grid-column:1/-1;text-align:center;padding:40px;">No products found 😢</div>';
+          dealsContainer.innerHTML = "";
+          return;
+        }
+
+        productsContainer.innerHTML = filteredProducts
+          .map(
+            (product) => `
+                <div class="product-card" data-id="${product.id}">
+                    ${
+                      product.badge
+                        ? `<span class="product-badge">${product.badge}</span>`
+                        : ""
+                    }
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <div class="rating">${"★".repeat(
+                      product.rating
+                    )}${"☆".repeat(
+              5 - product.rating
+            )} <span class="rating-count">(${product.reviews})</span></div>
+                    <div class="price-container">
+                        <span class="old-price">$${product.oldPrice}</span>
+                        <span class="price">$${product.price.toLocaleString()}</span>
+                        <span class="discount">+${Math.round(
+                          (product.price / product.oldPrice - 1) * 100
+                        )}00%</span>
+                    </div>
+                    <button onclick="addToCart(${
+                      product.id
+                    })">Add to Cart</button>
+                </div>
+            `
+          )
+          .join("");
+
+        dealsContainer.innerHTML = "";
+      }
+
+      // Show cart
+      function showCart() {
+        cartModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Hide cart
+      function hideCart() {
+        cartModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Show auth modal
+      function showAuthModal() {
+        authModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Hide auth modal
+      function hideAuthModal() {
+        authModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Show register modal
+      function showRegisterModal() {
+        hideAuthModal();
+        showErrorModal(
+          "Registration Disabled",
+          "Sorry, registration is temporarily unavailable. Please try again later!"
+        );
+      }
+
+      // Show info modal
+      function showInfoModal(title) {
+        infoModalTitle.textContent = title;
+
+        // Add different content for different titles
+        if (title === "Terms of Use") {
+          infoModalContent.innerHTML = `
+                    <p>Our terms of use are very simple:</p>
+                    <ol>
+                        <li>You give us money</li>
+                        <li>You might receive a product</li>
+                        <li>You don't complain</li>
+                    </ol>
+                    <p>Simple, right? 😊</p>
+                `;
+        } else if (title === "Privacy Policy") {
+          infoModalContent.innerHTML = `
+                    <p>We collect all your data and sell it to advertisers. What did you expect?</p>
+                    <p>But don't worry, this is Chinazon, everything is safe here! (not really)</p>
+                `;
+        } else {
+          infoModalContent.innerHTML = `
+                    <p>Information about "${title}" will be available soon on our website.</p>
+                    <p>In the meantime, feel free to shop our wonderful products!</p>
+                `;
+        }
+
+        infoModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Hide info modal
+      function hideInfoModal() {
+        infoModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Show error modal
+      function showErrorModal(title, message) {
+        errorTitle.textContent = title;
+        errorMessage.textContent = message;
+        errorModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Hide error modal
+      function hideErrorModal() {
+        errorModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Show success modal
+      function showSuccessModal(title, message) {
+        successTitle.textContent = title;
+        successMessage.textContent = message;
+        successModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+          hideSuccessModal();
+        }, 3000);
+      }
+
+      // Hide success modal
+      function hideSuccessModal() {
+        successModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Scroll to products
+      function scrollToProducts() {
+        document.getElementById("products-section").scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+      // Create bubbles
+      function createBubbles() {
+        const hero = document.querySelector(".hero");
+
+        for (let i = 0; i < 8; i++) {
+          const bubble = document.createElement("div");
+          bubble.className = "bubble";
+
+          const size = Math.random() * 80 + 20;
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+          bubble.style.left = `${Math.random() * 80 + 10}%`;
+          bubble.style.top = `${Math.random() * 80 + 10}%`;
+          bubble.style.opacity = Math.random() * 0.2 + 0.1;
+          bubble.style.animationDuration = `${Math.random() * 7 + 3}s`;
+          bubble.style.animationDelay = `${Math.random() * 5}s`;
+
+          hero.appendChild(bubble);
+        }
+      }
+
+      // Handle auth form
+      document
+        .getElementById("auth-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          // Simple validation
+          if (!email.includes("@") || password.length < 6) {
+            showErrorModal(
+              "Login Failed",
+              "Invalid email or password! Please try again."
+            );
+            return;
+          }
+
+          showSuccessModal(
+            "Welcome Back!",
+            `Hello ${email.split("@")[0]}! You've successfully signed in.`
+          );
+          hideAuthModal();
+        });
+
+      // Close modals when clicking outside
+      window.addEventListener("click", function (e) {
+        if (e.target === cartModal) {
+          hideCart();
+        }
+        if (e.target === authModal) {
+          hideAuthModal();
+        }
+        if (e.target === infoModal) {
+          hideInfoModal();
+        }
+        if (e.target === errorModal) {
+          hideErrorModal();
+        }
+        if (e.target === successModal) {
+          hideSuccessModal();
+        }
+      });
+    </script>
+  
+
+</body></html>
